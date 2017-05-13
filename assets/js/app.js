@@ -388,6 +388,17 @@ function handleAllGeolocation(startAdr, endAdr) {
                     reject(err);
                 })
         }
+        else {
+            addressToGeo(endAdr)
+            .then(function(resp) {
+                finalGeoObj.end = resp;
+                return addressToGeo(startAdr)
+            })
+            .then(function(resp) {
+                finalGeoObj.start = resp;
+                resolve(finalGeoObj);
+            })
+        }
 
     })
 }
