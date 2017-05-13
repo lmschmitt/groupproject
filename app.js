@@ -167,7 +167,7 @@ function dollar(value) {
 
 function getUberTimeEstimate(geoObj) {
     return new Promise(function(resolve, reject) {
-        var uber_token = "uWfUgG1yE-FroJRj4JzPsi9DSmefcgIK2MjoMajR";
+        var uber_token = "HYa6vzVRMoRE7PD6htDMeURb71etlr_1QefZot6C";
         axios({
                 method: 'GET',
                 url: "https://api.uber.com/v1.2/estimates/price?start_latitude=" + geoObj.start.lat + "&start_longitude=" + geoObj.start.lng + "&end_latitude=" + geoObj.end.lat + "&end_longitude=" + geoObj.end.lng,
