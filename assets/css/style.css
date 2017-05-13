@@ -1,0 +1,27 @@
+.gmtnav {
+    height: 70px;
+}
+
+body {
+    background: url(../images/back1.jpg);
+    width: 1349px;
+    height: 800px;
+}
+
+.page-header small {
+    color: white;
+}
+
+.gmt-footer {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding-top: 5px;
+    position: absolute;
+    margin-bottom: -250px;
+    /*z-index: 1001;*/
+    bottom: 0;
+    left: 0;
+}
+
+.footer-text {}
