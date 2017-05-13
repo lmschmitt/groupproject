@@ -165,26 +165,26 @@ function dollar(value) {
 //     })
 // }
 
-// function getUberTimeEstimate(geoObj) {
-//     return new Promise(function(resolve, reject) {
-//         var uber_token = "uWfUgG1yE-FroJRj4JzPsi9DSmefcgIK2MjoMajR";
-//         axios({
-//                 method: 'GET',
-//                 url: "https://api.uber.com/v1.2/estimates/price?start_latitude=" + geoObj.start.lat + "&start_longitude=" + geoObj.start.lng + "&end_latitude=" + geoObj.end.lat + "&end_longitude=" + geoObj.end.lng,
-//                 headers: {
-//                     Authorization: "Token " + uber_token
-//                 }
-//             })
-//             .then(function(response) {
-//                 resolve(response);
-//                 console.log(response);
-//             })
-//             .catch(function(error) {
-//                 reject(error);
-//             });
+function getUberTimeEstimate(geoObj) {
+    return new Promise(function(resolve, reject) {
+        var uber_token = "uWfUgG1yE-FroJRj4JzPsi9DSmefcgIK2MjoMajR";
+        axios({
+                method: 'GET',
+                url: "https://api.uber.com/v1.2/estimates/price?start_latitude=" + geoObj.start.lat + "&start_longitude=" + geoObj.start.lng + "&end_latitude=" + geoObj.end.lat + "&end_longitude=" + geoObj.end.lng,
+                headers: {
+                    Authorization: "Token " + uber_token
+                }
+            })
+            .then(function(response) {
+                resolve(response);
+                console.log(response);
+            })
+            .catch(function(error) {
+                reject(error);
+            });
 
-//     })
-// }
+    })
+}
 
 
 function initMap(geoObj) {
