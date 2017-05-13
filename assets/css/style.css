@@ -6,10 +6,16 @@ body {
     background: url(../images/back1.jpg);
     width: 1349px;
     height: 800px;
+    margin: 0 auto;
 }
 
 .page-header small {
     color: white;
+}
+
+#map {
+    height: 70%;
+    width: 100%;
 }
 
 .gmt-footer {
