@@ -333,6 +333,7 @@ function getAllFareData(geoData) {
         })
         .then(function(resp) {
             fareInfo.uber = resp;
+            console.log(fareInfo.uber.data.price[1].high_estimate);
             initMap(geoData);
             console.log(fareInfo);
         })
