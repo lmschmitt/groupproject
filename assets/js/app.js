@@ -1,13 +1,3 @@
-// variable declerations
-// CONSTANTS
-// var UBER_CLIENT_ID = "EXXhWDBwoKsEKb3G2txwmcj2KPYj7S36";
-// var UBER_CLIENT_SECRET = "9ZXBLO69GUquVf21nduWTjyO4Auniw2Ri7NoZLia";
-// var startLat;
-// var startLong;
-// var endLat;
-// var endLong;
-
-
 function deleteMarkers(markersArray) {
     for (var i = 0; i < markersArray.length; i++) {
         markersArray[i].setMap(null);
@@ -67,9 +57,6 @@ function addressToGeo(inputAddress) {
 
 
 //lyft
-
-
-
 var LYFT_CLIENT_ID = "4VUhVhVOSdP8";
 var SECRET = "EghRc_w20qL6BntxutRQxDr1MMpB-Y3g";
 var LYFT_TOKEN;
@@ -111,28 +98,7 @@ function dollar(value) {
 }
 
 
-// $(document).ready(function() {
-//     console.log("hi");
-//     $("#target").submit(function(event) {
-//         event.preventDefault();
-//         var inputAddress = $("#startAddress").val();
-//         console.log(inputAddress);
 
-
-//         var key = "AIzaSyAmoeeVA0-TiJTpH5tOGpwKGpPtryW51oY"
-//         var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + inputAddress + key;
-
-//         $.ajax({
-//                 url: queryURL,
-//                 method: "GET"
-//             })
-//             .done(function(response) {
-//                 console.log(response);
-
-
-//             });
-//     });
-// });
 
 
 
@@ -140,30 +106,7 @@ function dollar(value) {
 
 
 //main logic here.
-// function getUberTimeEstimate(geoObj) {
-//     return new Promise(function(resolve, reject) {
-//         var uber_token = "uWfUgG1yE-FroJRj4JzPsi9DSmefcgIK2MjoMajR";
-//         axios({
-//                 url: 'https://login.uber.com/oauth/v2/token',
-//         		method: 'POST',
-//         		data: {
-//             		grant_type: 'authorization_code',
-//             		redirect_uri: 'http://localhost:3000'
-//         		},
-//         		client_sercret: 
-//         		headers: {
-//             		Authorization: "Token " + uber_token
-//         		}
-//             	})
-//             	.then(function(response) {
-//                 	resolve(response);
-//             	})
-//             	.catch(function(error) {
-//                 	reject(error);
-//             	});
 
-//     })
-// }
 
 function getUberTimeEstimate(geoObj) {
      return new Promise(function(resolve, reject) {
@@ -327,7 +270,7 @@ function getAllFareData(geoData) {
             console.log(fareInfo.lyft.data.cost_estimates[1].estimated_cost_cents_min);
             console.log(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds);
             $("#lyft").append("<br>" + "Lyft average cost: $" + dollar(fareInfo.lyft.data.cost_estimates[1].estimated_cost_cents_min)+ " dollars");
-            $("#lyft").append("<br>" + "Lyft average duration: " + convert(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds)+ " minutes");
+            $("#lyft").append("<br>" + "Lyft average duration: " + convert(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds)+ " (minutes:seconds)");
             initMap(geoData);
             return getUberTimeEstimate(geoData);
         })
@@ -336,7 +279,7 @@ function getAllFareData(geoData) {
             console.log(fareInfo.uber.data.prices[1].high_estimate);
             console.log(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds);
             $("#uber").append("<br>" + "Uber average cost: $" + (fareInfo.uber.data.prices[1].high_estimate)+ " dollars");
-            $("#uber").append("<br>" + "Uber average duration: " + convert(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds)+ " minutes");
+            $("#uber").append("<br>" + "Uber average duration: " + convert(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds)+ " (minutes:seconds)");
             initMap(geoData);
             console.log(fareInfo);
         })
@@ -405,25 +348,3 @@ function handleAllGeolocation(startAdr, endAdr) {
 
 
 
-
-
-//calling info from google for public transit
-//make sure to "return Promise" as seen above, this is basically making the function "thenable"
-// axios({
-// 	    url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Vancouver+BC|Seattle&destinations=San+Francisco|Victoria+BC&mode=bicycling&language=fr-FR&key=AIzaSyAjPgmTYG8Vy8uKfuoLDqwT70xOijQkiTo",
-//         method: 'GET',
-//     }).then(function(response) {
-//         console.log(response.data);
-
-//      $(".col-md-4 google").append("Google transit duration: " + response.data.rows[0].elements[0].duration.text);
-
-//         console.log(response.data.rows[0].elements[0].duration.text);
-
-
-//     $(".col-md-4 google").append("Google transit cost: " + response.data.rows[0].elements[0].fare.text);
-
-//         console.log(response.data.rows[0].elements[0].fare.text);
-//     })
-//     .catch(function(error) {
-//         console.error(error);
-//     });
