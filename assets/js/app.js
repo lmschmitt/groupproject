@@ -333,6 +333,10 @@ function getAllFareData(geoData) {
         })
         .then(function(resp) {
             fareInfo.uber = resp;
+            console.log(fareInfo.uber.data.prices[1].high_estimate);
+            console.log(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds);
+            $("#uber").append("<br>" + "Uber average cost: $" + dollar(fareInfo.uber.data.prices[1].high_estimate);
+            $("#uber").append("<br>" + "Uber average duration: " + convert(fareInfo.lyft.data.cost_estimates[1].estimated_duration_seconds)+ " minutes");
             initMap(geoData);
             console.log(fareInfo);
         })
